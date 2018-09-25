@@ -4,11 +4,12 @@ import glob
 def read_directory(folder):
     # Set the directory to chdir
     os.chdir(folder)
-    # Return a list shapefile_names
-    shapefile_names = []
+
+    # For all files that end with .shp add the file name without extension to a list
     for file in glob.glob("*.shp"):
         shapefile_names.append(file[0:-4])
     print('These are the shapefiles in your directory: {}'.format(shapefile_names))
+    # Return the list of file names
     return shapefile_names
 
 
@@ -20,10 +21,11 @@ def create_sub_directory(shapefile_names):
             os.makedirs(newpath)
 
 def move_shapefiles(shapefile_names):
-    # Move all the shapefiles to their new folders
+    # List of extensions (not every shapefile has all of these extensions)
     list_of_shp_extensions = ['.shp', '.shx', '.dbf', '.sbn', '.sbx',
                               '.fbn', '.fbx', '.ain', '.aih', '.atx', '.ixs',
                               '.mxs', '.prj', '.xml', '.cpg', '.shp.xml']
+    # Move all the files that are in the shapefile_names list and have a proper extension to the corresponding folder
     for shapefile in shapefile_names:
         for extension in list_of_shp_extensions:
             file = r'{}{}'.format(shapefile, extension)
