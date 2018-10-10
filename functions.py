@@ -5,6 +5,8 @@ def read_directory(folder):
     # Set the directory to chdir
     os.chdir(folder)
 
+    shapefile_names = []
+
     # For all files that end with .shp add the file name without extension to a list
     for file in glob.glob("*.shp"):
         shapefile_names.append(file[0:-4])
@@ -37,11 +39,11 @@ def move_shapefiles(shapefile_names):
 
 
 
-def main(folder):
-    shapefile_names = read_directory(folder)
-
-    create_sub_directory(shapefile_names)
-
-    move_shapefiles(shapefile_names)
-
-main(r'D:\Documenten\Studentassistent_17-18\Introgis17')
+# def main(folder):
+#     shapefile_names = read_directory(folder)
+#
+#     create_sub_directory(shapefile_names)
+#
+#     move_shapefiles(shapefile_names)
+#
+# main(r'D:\Documenten\Studentassistent_17-18\Introgis17')
